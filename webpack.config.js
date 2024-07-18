@@ -32,6 +32,15 @@ module.exports = {
                 //     { loader: 'style-loader' },
                 //     { loader: 'css-loader', options: { modules: true } } // In case module.css files not working
                 // ]
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    { loader: 'style-loader' },
+                    { loader: 'css-loader', options: { modules: true } },
+                    { loader: 'sass-loader' }
+                ]
+                // order matters - Right to Left 
             }
         ]
     },
