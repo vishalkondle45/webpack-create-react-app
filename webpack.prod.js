@@ -3,7 +3,7 @@ const HTMLWebpackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: './src/index.js',
     output:{
         filename: 'bundle.js',
@@ -31,11 +31,7 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader"], // order matters - Right to Left 
-                // use: [
-                //     { loader: 'style-loader' },
-                //     { loader: 'css-loader', options: { modules: true } } // In case module.css files not working
-                // ]
+                use: [MiniCssExtractPlugin.loader, "css-loader"],
             },
             {
                 test: /\.s[ac]ss$/i,
@@ -44,7 +40,6 @@ module.exports = {
                     { loader: 'css-loader', options: { modules: true } },
                     { loader: 'sass-loader' }
                 ]
-                // order matters - Right to Left 
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -52,11 +47,4 @@ module.exports = {
             }
         ]
     },
-    devServer: {
-        static: {
-            directory: path.join(__dirname, 'dist'),
-        },
-        port: 3000,
-        open: true
-    }
 }
